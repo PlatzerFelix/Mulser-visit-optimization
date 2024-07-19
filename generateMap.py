@@ -236,7 +236,7 @@ def generateMap(userName, clientName, avgMeetingTime, timeAtMainClient, maxDrivi
         <b>Aktiver Vertrag:</b> {"Ja" if data['aktiverVertrag'] else "Nein"}<br>
         <b>Alter der Tore:</b> {data['alterTore']} Jahre<br>
         <b>Vertragsablauf:</b> {data['vertragsAblauf']}<br>
-        <b>Rang::</b> {data['ranking']}<br>
+        <b>Rang:</b> {data['ranking']}<br>
         </div>
         """
 
