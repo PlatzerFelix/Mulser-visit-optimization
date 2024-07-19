@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Select Clients</title>
+  <style>
+    body {
+      padding-top: 20px;
+    }
+    .container {
+      max-width: 600px;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .error-message { 
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center">ERP Client Visit Optimization</h1>
+    <form method="post" action="/">
+      <div class="form-group">
+        <label for="client1">Client 1:</label>
+        <select class="form-control" id="client1" name="client1" required>
+          <option value="">Select Client 1</option>
+          {% for client in clients %}
+          <option value="{{ client }}">{{ client }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="client2">Client 2:</label>
+        <select class="form-control" id="client2" name="client2" required>
+          <option value="">Select Client 2</option>
+          {% for client in clients %}
+          <option value="{{ client }}">{{ client }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Generate HTML</button>
+      <p class="mt-3">This tool helps you select two clients and generates an HTML map showing their locations and the best route to visit them. It also identifies other nearby clients and ranks them based on their importance.</p>
+      {% if error %}
+      <p class="error-message text-center mt-3">{{ error }}</p>
+      {% endif %}
+    </form>
+    <div class="mt-4">
+      <h5>How It Works</h5>
+      <ul>
+        <li><strong>Client Information:</strong> The tool stores details about each client, including their contact information, address, and business activity.</li>
+        <li><strong>Distance Calculation and Mapping:</strong> It calculates the distance between your location and the clients’ locations. A map is created with markers for each client and the route between them.</li>
+        <li><strong>Nearby Clients:</strong> The tool identifies other clients near the route and includes them on the map. Clients are sorted by their importance based on specific criteria.</li>
+        <li><strong>Optimal Route:</strong> If there are multiple nearby clients, the tool plans the best route to visit them all efficiently. The final map with all the routes and client markers is saved for your reference.</li>
+      </ul>
+    </div>
+    <div class="mt-4">
+      <h5>Client Ranking System</h5>
+      <ul>
+        <li><strong>Visit Frequency and Volume:</strong> It checks how recently each client was visited and their business volume.</li>
+        <li><strong>Contract and Invoice Status:</strong> Clients are evaluated based on their contract activity and open invoices. Each client is given a priority rating to show their importance.</li>
+        <li><strong>Overall Ranking:</strong> The final ranking combines these factors to indicate each client's priority.</li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
